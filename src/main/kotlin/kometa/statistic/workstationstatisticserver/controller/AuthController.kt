@@ -30,17 +30,17 @@ class AuthController(
 
     @PostMapping("/register")
     fun register(@RequestBody req: RegisterRequest): AuthResponse {
-        if (userRepo.existsByUsername(req.username)) {
+        if (userRepo.existsByLogin(req.username)) {
             throw IllegalArgumentException("User already exists")
         }
 
         val user = User(
-            username = req.username,
-            password = passwordEncoder.encode(req.password),
+            login = req.username,
+            hashedPassword = passwordEncoder.encode(req.password),
             role = req.role
         )
         userRepo.save(user)
-        val token = jwtService.generateToken(user.username)
+        val token = jwtService.generateToken(user.login)
         return AuthResponse(token)
     }
 }

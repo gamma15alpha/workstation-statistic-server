@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title th:text="${title} ?: 'Admin Panel'">Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #1e1e2f;
+            color: #ffffff;
+        }
+
+        header, footer {
+            background-color: #2c2c3e;
+            padding: 1rem 2rem;
+        }
+
+        a {
+            color: #8ab4f8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid #444;
+        }
+
+        th {
+            background-color: #2e2e40;
+        }
+
+        tr:nth-child(even) {
+            background-color: #252535;
+        }
+
+        tr:hover {
+            background-color: #303045;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="layout/header :: header"></header>
+
+<div class="container" th:insert="${content}"></div>
+
+<footer th:replace="layout/footer :: footer"></footer>
+</body>
+</html>

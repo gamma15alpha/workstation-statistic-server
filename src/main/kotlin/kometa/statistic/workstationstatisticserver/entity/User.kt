@@ -11,10 +11,10 @@ data class User(
     val id: Long = 0,
 
     @Column(unique = true, nullable = false)
-    val username: String = "",
+    val login: String = "",
 
     @Column(nullable = false)
-    val password: String = "",
+    val hashedPassword: String = "",
 
     @Column(nullable = false)
     val role: String = "CLIENT" // "ADMIN", "CLIENT"
@@ -22,8 +22,8 @@ data class User(
     override fun getAuthorities(): Collection<GrantedAuthority> =
         listOf(GrantedAuthority { "ROLE_$role" })
 
-    override fun getPassword(): String = password
-    override fun getUsername(): String = username
+    override fun getPassword(): String = hashedPassword
+    override fun getUsername(): String = login
 
     override fun isAccountNonExpired(): Boolean = true
     override fun isAccountNonLocked(): Boolean = true

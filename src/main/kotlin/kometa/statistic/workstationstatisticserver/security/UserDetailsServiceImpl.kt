@@ -12,7 +12,7 @@ class UserDetailsServiceImpl(
 ) : UserDetailsService {
 
     override fun loadUserByUsername(username: String): UserDetails {
-        return userRepository.findByUsername(username)
+        return userRepository.findByLogin(username)
             .orElseThrow { UsernameNotFoundException("User $username not found") }
     }
 }

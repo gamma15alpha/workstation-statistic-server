@@ -12,12 +12,12 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - wssdata:/var/lib/postgresql/data
     networks:
-      - schedule-network
+      - wss-network
 
 networks:
-  schedule-network:
+  wss-network:
 
 volumes:
-  pgdata:
+  wssdata:
