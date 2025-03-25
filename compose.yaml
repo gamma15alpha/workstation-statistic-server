@@ -3,12 +3,12 @@ version: '3.8'
 services:
   postgres:
     image: postgres:15
-    container_name: schedule-db
+    container_name: wss-db
     restart: always
     environment:
-      POSTGRES_DB: schedule
-      POSTGRES_USER: schedule_server
-      POSTGRES_PASSWORD: schedule_server_secret
+      POSTGRES_DB: wss_db
+      POSTGRES_USER: wss_server
+      POSTGRES_PASSWORD: wss_secret
     ports:
       - "5433:5432"
     volumes:

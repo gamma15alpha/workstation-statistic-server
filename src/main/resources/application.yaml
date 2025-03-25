@@ -1,3 +1,34 @@
+server:
+  port: 8080
+
 spring:
-  application:
-      name: workstation-statistic-server
+  datasource:
+    url: jdbc:postgresql://localhost:5432/wss_db
+    username: wss_server
+    password: wss_secret
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
+jwt:
+  secret: super-secret-jwt-key
+  expiration: 3600000
+
+logging:
+  level:
+    org.springframework.security: DEBUG
